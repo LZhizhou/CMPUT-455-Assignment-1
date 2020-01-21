@@ -30,7 +30,7 @@ class SimpleGoBoard(object):
         board_copy = self.copy()
         # Try to play the move on a temporary copy of board
         # This prevents the board from being messed up by the move
-        legal = board_copy.play_move(point, color)
+        legal = board_copy.play_move(point, color)[0]
         return legal
 
     def get_empty_points(self):
@@ -171,12 +171,12 @@ class SimpleGoBoard(object):
         assert is_black_white(color)
         # Special cases
         if point == PASS:
-            return False
+            return False, "pass"
             # self.ko_recapture = None
             # self.current_player = GoBoardUtil.opponent(color)
             # return True
         elif self.board[point] != EMPTY:
-            return False
+            return False, "occupied"
         # if point == self.ko_recapture:
         #     return False
             
@@ -189,18 +189,18 @@ class SimpleGoBoard(object):
             if self.board[nb] == opp_color:
                 opp_block = self._block_of(nb)
                 if not self._has_liberty(opp_block):
-                    self.board[nb] = EMPTY
-                    return False
+                    self.board[point] = EMPTY
+                    return False, "capture"
                     # single_captures.append(single_capture)
         block = self._block_of(point)
         if not self._has_liberty(block): # undo suicide move
             self.board[point] = EMPTY
-            return False
+            return False, "suicide"
         # self.ko_recapture = None
         # if in_enemy_eye and len(single_captures) == 1:
         #     self.ko_recapture = single_captures[0]
         self.current_player = GoBoardUtil.opponent(color)
-        return True
+        return True, ""
 
     def neighbors_of_color(self, point, color):
         """ List of neighbors of point of given color """

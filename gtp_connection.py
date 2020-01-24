@@ -276,7 +276,7 @@ class GtpConnection():
                 return
             illegal, message = self.board.play_move(move, color)
             if message:
-                self.respond("illegal Move: " + '"' + 'play {} {}" {}'.format(board_color,board_move,message))
+                self.respond("illegal Move: " + '"' + '{} {}" {}'.format(board_color,board_move,message))
                 return
             else:
                 self.debug_msg("Move: {}\nBoard:\n{}\n".

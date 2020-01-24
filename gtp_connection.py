@@ -270,13 +270,13 @@ class GtpConnection():
             if coord:
                 move = coord_to_point(coord[0],coord[1], self.board.size)
             else:
-                self.respond("illegal Move:" +  ' "{} {}" wrong coordinate'.format(board_color,board_move ))
+                self.respond("illegal move:" +  ' "{} {}" wrong coordinate'.format(board_color,board_move ))
                 # self.error("Error executing move {} converted from {}"
                 #            .format(move, args[1]))
                 return
             illegal, message = self.board.play_move(move, color)
             if message:
-                self.respond("illegal Move: " + '"' + '{} {}" {}'.format(board_color,board_move,message))
+                self.respond("illegal move: " + '"' + '{} {}" {}'.format(board_color,board_move,message))
                 return
             else:
                 self.debug_msg("Move: {}\nBoard:\n{}\n".

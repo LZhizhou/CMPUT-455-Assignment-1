@@ -205,8 +205,13 @@ class GtpConnection():
         player = self.board.current_player
         for points in self.board.get_empty_points():
             if self.board.is_legal(points, player):
-                moves.append(format_point(point_to_coord(points, self.board.size)))
-        self.respond(moves)
+
+                coords = point_to_coord(points, self.board.size)
+
+                moves.append(format_point(coords))
+        sorted_moves = ' '.join(sorted(moves))
+        self.respond(sorted_moves)
+        # self.respond(moves)
         return
 
     def gogui_rules_side_to_move_cmd(self, args):
@@ -265,13 +270,13 @@ class GtpConnection():
             if coord:
                 move = coord_to_point(coord[0],coord[1], self.board.size)
             else:
-                self.respond("Illegal Move: play {} {}, pass".format(board_color,board_move))
+                self.respond("illegal Move:" +  ' "{} {}" wrong coordinate'.format(board_color,board_move ))
                 # self.error("Error executing move {} converted from {}"
                 #            .format(move, args[1]))
                 return
             illegal, message = self.board.play_move(move, color)
             if message:
-                self.respond("Illegal Move: play {} {}, {}".format(board_color,board_move,message))
+                self.respond("illegal Move: " + '"' + 'play {} {}" {}'.format(board_color,board_move,message))
                 return
             else:
                 self.debug_msg("Move: {}\nBoard:\n{}\n".
@@ -348,6 +353,8 @@ def point_to_coord(point, boardsize):
     """
     if point == PASS:
         return PASS
+      
+      
     else:
         NS = boardsize + 1
         return divmod(point, NS)

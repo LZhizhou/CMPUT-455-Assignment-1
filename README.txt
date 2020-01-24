@@ -11,5 +11,5 @@ ccid:zhizhou
 This assignment is finished by ourselves, without cooperation with others.
 Main work finished by Lu Zhizhou;
 Yu Zhengxiao and Li Yanlin do check work.
-It takes 20min on coding;
+It takes 10 min on coding;
 2 hours on installing gogui

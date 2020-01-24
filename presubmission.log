@@ -1,0 +1,13 @@
+Script started on 2020-01-23 20:15:47-0700
+]0;zhizhou@DESKTOP-7JHH4QO: /mnt/e/HW/gogui/bin[01;32mzhizhou@DESKTOP-7JHH4QO[00m:[01;34m/mnt/e/HW/gogui/bin[00m$ tar -xvf assignment1.tgz 
+Go0.py
+board_util.py
+gtp_connection.py
+simple_board.py
+README.md
+pubilc-tests-nogo.gtp
+]0;zhizhou@DESKTOP-7JHH4QO: /mnt/e/HW/gogui/bin[01;32mzhizhou@DESKTOP-7JHH4QO[00m:[01;34m/mnt/e/HW/gogui/bin[00m$ ./gogui-regress Go0.py pubilc-tests-nogo.gtp
+]0;zhizhou@DESKTOP-7JHH4QO: /mnt/e/HW/gogui/bin[01;32mzhizhou@DESKTOP-7JHH4QO[00m:[01;34m/mnt/e/HW/gogui/bin[00m$ exit
+exit
+
+Script done on 2020-01-23 20:16:14-0700

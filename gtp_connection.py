@@ -205,6 +205,7 @@ class GtpConnection():
         player = self.board.current_player
         for points in self.board.get_empty_points():
             if self.board.is_legal(points, player):
+
                 coords = point_to_coord(points, self.board.size)
 
                 moves.append(format_point(coords))
@@ -352,6 +353,8 @@ def point_to_coord(point, boardsize):
     """
     if point == PASS:
         return PASS
+      
+      
     else:
         NS = boardsize + 1
         return divmod(point, NS)

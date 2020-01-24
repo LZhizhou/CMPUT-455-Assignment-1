@@ -205,7 +205,7 @@ class GtpConnection():
         player = self.board.current_player
         for points in self.board.get_empty_points():
             if self.board.is_legal(points, player):
-                moves.append(points)
+                moves.append(format_point(point_to_coord(points, self.board.size)))
         self.respond(moves)
         return
 
@@ -292,7 +292,7 @@ class GtpConnection():
             self.board.play_move(move, color)
             self.respond(move_as_string)
         else:
-            self.respond("Illegal move: {}".format(move_as_string))
+            self.respond("resign")
 
     """
     ==========================================================================
